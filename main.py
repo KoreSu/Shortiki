@@ -1,18 +1,34 @@
-import requests
-from pprint import pprint
-import random
+import asyncio
+from aiogram import Bot, Dispatcher, F
+from aiogram.types import Message
 
-url = 'http://shortiki.com/export/api.php'
 
-params =  {
-    "format": "json",
-    "amount": "100",
-    "type":"top"
-}
+f = int(input(""))
 
-response = requests.get(url, params=params)
-response.raise_for_status()
-z = print(response.json()[random.randint(0,100)]['content'])
 
-x = len(response.json())
-print(x)
+tg_bot_token = "ТОКЕН вашего телеграм бота"
+
+dp = Dispatcher()
+
+@dp.message(F.text=="/start")
+async def command_start(message: Message) -> None:
+    await message.answer("Привет! Это первое сообщение бота! Оно высвечивается, когда пользователь вводит команду /start")
+
+@dp.message(F.text=="/donation")
+async def command_start(message: Message) -> None:
+    await message.answer("Поддержать автора можно здесь{f}")
+
+@dp.message(F.text=="/start")
+async def command_start(message: Message) -> None:
+    await message.answer("Привет!")
+
+
+
+
+async def main():
+    bot = Bot(token=tg_bot_token)
+    await dp.start_polling(bot)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
