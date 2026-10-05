@@ -29,7 +29,7 @@ async def main():
 
     await dp.start_polling(bot)
 
-@dp.message(F.text=="/donation")
+@dp.message(F.text=="/donat")
 async def command_start(message: Message) -> None:
     await message.answer("Поддержать автора можно здесь{f}")
 
@@ -37,10 +37,18 @@ async def command_start(message: Message) -> None:
 async def command_start(message: Message) -> None:
     await message.answer("Привет!")
 
-@dp.message(F.text=="/Help")
+@dp.message(F.text=="/help")
 async def command_start(message: Message) -> None:
     await message.answer("Поддержка не отвечает")
 
-
+@dp.message(F.text.startswith("/better"))
+async def command_start(message: Message) -> None:
+    splited_message_text = message.text.split(" ")
+    number1 = int(splited_message_text[1])
+    number2 = int(splited_message_text[2])
+    if number1 > number2:
+        await message.answer(str(number1))
+    else: await message.answer(str(number2))
+    
 if __name__ == "__main__":
     asyncio.run(main())
