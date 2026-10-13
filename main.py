@@ -61,11 +61,13 @@ async def command_start(message: Message) -> None:
 
 @dp.message(F.text=="/random_number")
 async def command_start(message: Message) -> None:
-    await message.answer(random.randint(0,10))
+    await message.answer(str(random.randint(0,10)))
 
 @dp.message(F.text.startswith=="Мой возраст")
 async def command_start(message: Message) -> None:
-    await message.answer
+    splited_message_text = message.text.split(" ")
+    age = int(splited_message_text)
+    await message.answer(f"Классно! А через 10 лет тебе будет {age + 10} лет")
 
 if __name__ == "__main__":
     asyncio.run(main())
