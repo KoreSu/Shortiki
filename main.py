@@ -2,7 +2,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 from aiogram.types import BotCommand
-
+import random
 
 tg_bot_token = "8703457324:AAF73WOjeXwtQ_yA7luPR6TNdF8VoD7Uwqs"
 
@@ -14,6 +14,8 @@ async def set_commands_menu(bot):
         BotCommand(command="/start", description="Запуск!"),
         BotCommand(command="/help", description="Получить справку по работе с ботом"),
         BotCommand(command="/donat", description="Поддержать автора"),
+        BotCommand(command="/random", description="Рандомное имя"),
+        BotCommand(command="/random_number", description="Рандомное число")
     ]
     await bot.set_my_commands(bot_commands)
 
@@ -49,6 +51,21 @@ async def command_start(message: Message) -> None:
     if number1 > number2:
         await message.answer(str(number1))
     else: await message.answer(str(number2))
-    
+
+
+spisok = ["Леха", "Зитракс", " Меганайт", "Улитки"]
+@dp.message(F.text=="/random")
+async def command_start(message: Message) -> None:
+    await message.answer(random.choice(spisok))
+
+
+@dp.message(F.text=="/random_number")
+async def command_start(message: Message) -> None:
+    await message.answer(random.randint(0,10))
+
+@dp.message(F.text.startswith=="Мой возраст")
+async def command_start(message: Message) -> None:
+    await message.answer
+
 if __name__ == "__main__":
     asyncio.run(main())
