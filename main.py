@@ -63,7 +63,7 @@ async def command_start(message: Message) -> None:
 async def command_start(message: Message) -> None:
     await message.answer(str(random.randint(0,10)))
 
-@dp.message(F.text.startswith=="Мой возраст")
+@dp.message(F.text.startswith("Мой возраст"))
 async def command_start(message: Message) -> None:
     print("Мы(Я)")
     splited_message_text = message.text.split(" ")
@@ -73,4 +73,4 @@ async def command_start(message: Message) -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
+
