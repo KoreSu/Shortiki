@@ -67,7 +67,7 @@ async def command_start(message: Message) -> None:
 async def command_start(message: Message) -> None:
     print("Мы(Я)")
     splited_message_text = message.text.split(" ")
-    age = int(splited_message_text)
+    age = int(splited_message_text[2])
     await message.answer(f"Классно! А через 10 лет тебе будет {age + 10} лет")
 
 
