@@ -12,3 +12,8 @@ math_keyboard = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text=' Главное меню ')]
 ],
 resize_keyboard=True)
+
+back_keyboard = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text=' Главное меню ')]
+],
+resize_keyboard=True)
