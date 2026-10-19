@@ -3,6 +3,11 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 from aiogram.types import BotCommand
 import random
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message
+from keyboard import main_menu_keyboard
+
+
 
 tg_bot_token = "8703457324:AAF73WOjeXwtQ_yA7luPR6TNdF8VoD7Uwqs"
 
@@ -31,6 +36,17 @@ async def main():
     await set_commands_menu(bot)
 
     await dp.start_polling(bot)
+
+from aiogram.types import Message
+
+@dp.message(F.text=="/start")
+async def cmd_start(message: Message):
+    await message.answer("Добро пожаловать в бота", reply_markup=main_menu_keyboard)
+
+@dp.message(F.text=='📊 Математика')
+async def button_one(message: Message):
+    await message.delete() # удаляет сообщение пользователя в котором содержится просто текст кнопки
+    await message.answer("Зафиксировано нажатие на кнопку Математика")
 
 @dp.message(F.text=="/donat")
 async def command_start(message: Message) -> None:
