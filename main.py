@@ -6,7 +6,7 @@ import random
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import Message
 from keyboard import main_menu_keyboard
-
+from keyboard import math_keyboard
 
 
 tg_bot_token = "8703457324:AAF73WOjeXwtQ_yA7luPR6TNdF8VoD7Uwqs"
@@ -46,7 +46,30 @@ async def cmd_start(message: Message):
 @dp.message(F.text=='📊 Математика')
 async def button_one(message: Message):
     await message.delete() # удаляет сообщение пользователя в котором содержится просто текст кнопки
-    await message.answer("Зафиксировано нажатие на кнопку Математика")
+    await message.answer("Зафиксировано нажатие на кнопку Математика", reply_markup=math_keyboard)
+
+
+
+@dp.message(F.text=='+')
+async def button_one(message: Message):
+    await message.delete()
+    await message.answer("Текст кнопки +")
+
+@dp.message(F.text=='*')
+async def button_one(message: Message):
+    await message.delete()
+    await message.answer("Текст кнопки *")
+
+@dp.message(F.text=='-')
+async def button_one(message: Message):
+    await message.delete()
+    await message.answer("Текст кнопки -")
+
+@dp.message(F.text=='Главное меню')
+async def button_one(message: Message):
+    await message.delete()
+    await message.answer("Главное меню",reply_markup=main_menu_keyboard)
+
 
 @dp.message(F.text=="/donat")
 async def command_start(message: Message) -> None:

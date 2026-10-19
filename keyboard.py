@@ -1,8 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.types import Message
-from aiogram import Bot, Dispatcher, F
-from aiogram.types import BotCommand
-import random
+
 
 
 main_menu_keyboard = ReplyKeyboardMarkup(keyboard=[
@@ -10,3 +7,8 @@ main_menu_keyboard = ReplyKeyboardMarkup(keyboard=[
 ],
 resize_keyboard=True)
 
+math_keyboard = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text=' + '), KeyboardButton(text=' - '), KeyboardButton(text=' * ')],
+    [KeyboardButton(text=' Главное меню ')]
+],
+resize_keyboard=True)
