@@ -16,7 +16,6 @@ async def set_commands_menu(bot):
         BotCommand(command="/donat", description="Поддержать автора"),
         BotCommand(command="/random", description="Рандомное имя"),
         BotCommand(command="/random_number", description="Рандомное число"),
-        BotCommand(command="Мой возраст", description="Введите любое число,бот прибавит 10"),
         BotCommand(command="/better", description="Бот выберет большее число из 2 введеных")
     ]
     await bot.set_my_commands(bot_commands)
