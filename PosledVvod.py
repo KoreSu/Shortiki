@@ -41,9 +41,10 @@ async def main():
 
 @dp.message(F.text=='/sum')
 async def start_command(message: Message, state: FSMContext):
-    await message.answer("Введите число")
-    await state.set_state(States.waiting_number_one)
 
+    await message.answer("Введите число")
+
+    await state.set_state(States.waiting_number_one)
 
 @dp.message(States.waiting_number_one)
 async def process_name(message: Message, state: FSMContext):
@@ -52,14 +53,19 @@ async def process_name(message: Message, state: FSMContext):
 
     await state.set_state(States.waiting_number_two)
 
+    await state.update_data(first=message.text)
 
 @dp.message(States.waiting_number_two)
 async def process_age(message: Message, state: FSMContext):
 
-    lexa = int("waiting_number_one + waiting_number_two")
-    await message.answer(f"{lexa}")
+    temp_data = await state.get_data()
+    print(temp_data["first"])
+
+    await message.answer(f"{temp_data["first"]} + {message.text}")
 
     await state.clear()  
+
+# --------------------
 
 @dp.message(F.text=="/start")
 async def command_start(message: Message) -> None:
@@ -67,4 +73,3 @@ async def command_start(message: Message) -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-
