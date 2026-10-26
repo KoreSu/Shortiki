@@ -14,13 +14,12 @@ from aiogram.fsm.context import FSMContext
 load_dotenv()
 
 dp = Dispatcher(storage=MemoryStorage())
-dp = Dispatcher()
 
 tg_bot_token = os.getenv("TG_BOT_TOKEN")
 
 class States(StatesGroup):
-    waiting_name = State()
-    waiting_age = State()
+    waiting_number_one = State()
+    waiting_number_two = State()
 
 async def set_commands_menu(bot):
     bot_commands = [
