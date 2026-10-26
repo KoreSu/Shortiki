@@ -1,0 +1,71 @@
+import asyncio
+from aiogram import Bot, Dispatcher, F
+from aiogram.types import Message
+from aiogram.types import BotCommand
+import random
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import Message
+from dotenv import load_dotenv
+import os
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.context import FSMContext
+
+load_dotenv()
+
+dp = Dispatcher(storage=MemoryStorage())
+dp = Dispatcher()
+
+tg_bot_token = os.getenv("TG_BOT_TOKEN")
+
+class States(StatesGroup):
+    waiting_name = State()
+    waiting_age = State()
+
+async def set_commands_menu(bot):
+    bot_commands = [
+        BotCommand(command="/start", description="Запуск!"),
+    ]
+    await bot.set_my_commands(bot_commands)
+
+
+
+async def main():
+    bot = Bot(token=tg_bot_token)
+
+    await set_commands_menu(bot)
+
+    await dp.start_polling(bot)
+
+# ---------------------
+
+
+@dp.message(F.text=='/sum')
+async def start_command(message: Message, state: FSMContext):
+    await message.answer("Введите число")
+    await state.set_state(States.waiting_number_one)
+
+
+@dp.message(States.waiting_number_one)
+async def process_name(message: Message, state: FSMContext):
+
+    await message.answer(f"Введите 2 число")
+
+    await state.set_state(States.waiting_number_two)
+
+
+@dp.message(States.waiting_number_two)
+async def process_age(message: Message, state: FSMContext):
+
+    lexa = int("waiting_number_one + waiting_number_two")
+    await message.answer(f"{lexa}")
+
+    await state.clear()  
+
+@dp.message(F.text=="/start")
+async def command_start(message: Message) -> None:
+    await message.answer("Привет!")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
