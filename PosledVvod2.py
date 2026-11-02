@@ -21,6 +21,7 @@ class States(StatesGroup):
     waiting_name = State()
     waiting_friend_name = State()
     waiting_age = State()
+    waiting_friend_one = State()
 
 async def set_commands_menu(bot):
     bot_commands = [
