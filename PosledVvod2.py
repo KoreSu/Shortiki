@@ -45,24 +45,20 @@ async def start_command(message: Message, state: FSMContext):
 
     await message.answer("Введите имя")
     await state.set_state(States.waiting_name)
-    await state.update_data(name=message.text)
 
-@dp.message(States.waiting_friend_one)
+
+@dp.message(States.waiting_name)
 async def process_name(message: Message, state: FSMContext):
 
     await message.answer(f"Введите имя друга")
-
     await state.set_state(States.waiting_friend_name)
 
-
-@dp.message(States.waiting_friend_one)
+@dp.message(States.waiting_friend_name)
 async def process_name(message: Message, state: FSMContext):
 
-    await message.answer(f"Сколько лет вы дружите?")
+    await message.answer(f"сколько лет вы дружите?")
     await state.update_data(friend_name=message.text)
-    await state.set_state(States.waiting_age)
-
-
+    await state.set.state(States.waiting_age)  
 
 @dp.message(States.waiting_age)
 async def process_age(message: Message, state: FSMContext):
