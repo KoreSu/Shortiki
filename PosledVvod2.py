@@ -70,8 +70,8 @@ async def process_age(message: Message, state: FSMContext):
     friend_name = temp_data["friend_name"]
     age = temp_data["age"]
 
-    N = 5
-    await message.answer(f"{name} и {friend_name} дружат уже {age} лет! И будут дружить еще {N} лет!")
+    N = random.randint(10,100)
+    await message.answer(f"{age} и {friend_name} дружат уже {name} лет! И будут дружить еще {N} лет!")
 
     await state.clear()  
 
