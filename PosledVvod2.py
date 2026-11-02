@@ -58,7 +58,7 @@ async def process_name(message: Message, state: FSMContext):
 async def process_name(message: Message, state: FSMContext):
 
     await message.answer(f"сколько лет вы дружите?")
-    await state.set.state(States.waiting_age)  
+    await state.set_state(States.waiting_age)  
     await state.update_data(age=message.text)
 
 
