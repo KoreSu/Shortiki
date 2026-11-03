@@ -23,8 +23,24 @@ class States(StatesGroup):
     waiting_number_three = State()
 
 
+async def set_commands_menu(bot):
+    bot_commands = [
+        BotCommand(command="/start", description="Запуск!"),
+    ]
+    await bot.set_my_commands(bot_commands)
 
-@dp.message(F.text=="/Random")
+
+
+async def main():
+    bot = Bot(token=tg_bot_token)
+
+    await set_commands_menu(bot)
+
+    await dp.start_polling(bot)
+
+
+
+@dp.message(F.text=="/random")
 async def start_command(message: Message, state: FSMContext):
 
     await message.answer(f"Введите 1 число:")
@@ -61,15 +77,3 @@ async def process_name(message: Message, state: FSMContext):
     await message.answer(f"Счастливо число:{lucky}")
     
     await state.clear()  
-
-
-
-
-
-
-# @dp.message(States.waiting_name)
-# async def process_name(message: Message, state: FSMContext):
-
-#     await message.answer(f"Введите имя друга")
-#     await state.set_state(States.waiting_friend_name)
-#     await state.update_data(name=message.text)
