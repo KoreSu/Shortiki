@@ -43,27 +43,30 @@ async def main():
 @dp.message(F.text=='/friend')
 async def start_command(message: Message, state: FSMContext):
 
-    await message.answer("Введите имя")
+    await message.answer(f"Введите имя")
     await state.set_state(States.waiting_name)
-    await state.update_data(name=message.text)
+
 
 @dp.message(States.waiting_name)
 async def process_name(message: Message, state: FSMContext):
 
     await message.answer(f"Введите имя друга")
     await state.set_state(States.waiting_friend_name)
-    await state.update_data(friend_name=message.text)
+    await state.update_data(name=message.text)
+
 
 @dp.message(States.waiting_friend_name)
 async def process_friend_name(message: Message, state: FSMContext):
 
     await message.answer(f"сколько лет вы дружите?")
     await state.set_state(States.waiting_age)  
-    await state.update_data(age=message.text)
+    await state.update_data(friend_name=message.text)
 
 
 @dp.message(States.waiting_age)
 async def process_age(message: Message, state: FSMContext):
+
+    await state.update_data(age=message.text)
 
     temp_data = await state.get_data()
     name = temp_data["name"]
