@@ -77,3 +77,7 @@ async def process_name(message: Message, state: FSMContext):
     await message.answer(f"Счастливо число:{lucky}")
     
     await state.clear()  
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
