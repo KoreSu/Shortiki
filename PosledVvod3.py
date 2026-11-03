@@ -73,7 +73,8 @@ async def process_name(message: Message, state: FSMContext):
     number_two = temp_data["number_two"]
     number_three = message.text
 
-    lucky = random.choice([number_one, number_two, number_three])
+    # lucky = random.choice([number_one, number_two, number_three])
+    lucky = (number_one + number_two + number_three)
     await message.answer(f"Счастливое число: {lucky}")
     
     await state.clear()  
