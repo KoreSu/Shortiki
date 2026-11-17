@@ -43,7 +43,7 @@ async def button_one(message: Message):
     await message.delete() # удаляет сообщение пользователя в котором содержится просто текст кнопки
     await message.answer("Зафиксировано нажатие на кнопку Подменю_1", reply_markup=math_keyboard)
 
-@dp.message(F.text=='Сложить')
+@dp.message(F.text=='СЛОЖИТЬ')
 async def start_command(message: Message, state: FSMContext):
 
     await message.answer("Введите число")
