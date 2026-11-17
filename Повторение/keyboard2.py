@@ -10,7 +10,7 @@ main_menu_keyboard = ReplyKeyboardMarkup(keyboard=[
 resize_keyboard=True)
 
 math_keyboard = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='Подподменю1'), KeyboardButton(text='Подподменю2')]
+    [KeyboardButton(text='Подподменю1'), KeyboardButton(text='Подподменю2')],
     [KeyboardButton(text=' Главное меню ')]
 ],
 resize_keyboard=True)
