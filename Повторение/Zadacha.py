@@ -11,9 +11,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from keyboard import main_menu_keyboard
-from keyboard import math_keyboard
-from keyboard import back_keyboard
+from keyboard2 import main_menu_keyboard
+from keyboard2 import math_keyboard
+from keyboard2 import back_keyboard
 
 
 load_dotenv()
