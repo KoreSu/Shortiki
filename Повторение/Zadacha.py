@@ -31,12 +31,6 @@ async def main():
     await dp.start_polling(bot)
 
 
-async def main():
-    bot = Bot(token=tg_bot_token)
-
-    await dp.start_polling(bot)
-
-from aiogram.types import Message
 
 
 
@@ -80,7 +74,8 @@ async def button_one(message: Message):
     await message.delete()
     await message.answer("Главное меню",reply_markup=main_menu_keyboard)
 
-
+if __name__ == "__main__":
+    asyncio.run(main())
 
 
 
