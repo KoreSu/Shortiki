@@ -15,7 +15,6 @@ from keyboard2 import main_menu_keyboard
 from keyboard2 import math_keyboard
 from keyboard2 import back_keyboard
 
-
 load_dotenv()
 
 dp = Dispatcher(storage=MemoryStorage())
@@ -27,7 +26,17 @@ class States(StatesGroup):
     waiting_number_two = State()
 
 
+async def main():
+    bot = Bot(token=tg_bot_token)
+    await dp.start_polling(bot)
 
+
+async def main():
+    bot = Bot(token=tg_bot_token)
+
+    await dp.start_polling(bot)
+
+from aiogram.types import Message
 
 
 
